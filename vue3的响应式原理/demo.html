@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue3的响应式原理</title>
+</head>
+<body>
+    <script>
+        //源数据
+        let person = {
+            name : '张三',
+            age : 18
+        }
+
+        //实现vue2中的响应式原理
+        /* let p = {};
+        Object.defineProperty(p , 'name' , {
+            get(){//读取name属性时调用
+                return person.name;
+            },
+            set(value){//修改name属性时调用
+                person.name = value;
+            }
+        })
+
+        console.log(p)
+
+        p.name = 'Tom Cruise';
+
+        console.log(person) */
+
+        //实现vue3中的响应式原理
+        const p = new Proxy(person , {});
+    </script>
+</body>
+</html>
