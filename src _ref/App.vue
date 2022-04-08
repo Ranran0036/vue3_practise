@@ -8,20 +8,20 @@
 </template>
 
 <script>
-	import { reactive, ref } from '@vue/reactivity';
+	import { ref } from '@vue/reactivity';
 	export default {
 		name: 'App',
 		setup () {
 			let name = ref('Tom Cruise');
 			let age = ref(56);
-			let job = reactive({
+			let job = ref({
 				work : 'actor',
 				salary : '30k'
 			});
 
 			function changeInfo (){
-				job.work = 'artist';
-				job.salary = '40k';
+				job.value.work = 'artist';
+				job.value.salary = '40k';
 			}
 
 			return {
