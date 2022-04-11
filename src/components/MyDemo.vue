@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import { ref , reactive} from '@vue/reactivity'
-import { watch } from '@vue/runtime-core';
+import { ref , reactive} from '@vue/reactivity';
+import { watchEffect } from '@vue/runtime-core';
 export default {
     //定义组件名
     name : 'MyDemo',
@@ -32,64 +32,9 @@ export default {
             }
         });
 
-        //情况一：监视ref所定义的一个响应式数据
-        watch( sum, (newValue, oldValue) => {
-            console.log('sum变化了 新值为：' + newValue + '，旧值为：' + oldValue);
+        watchEffect(() => {
+            console.log('sum变化了 新值为：' , sum.value );
         })
-
-        //情况二：监视ref所定义的多个响应式数据
-        /* watch(
-            [sum, msg],
-            (newValue, oldValue) => {
-                console.log(`sum或msg变化了` , newValue , oldValue);
-            },
-            //第三个参数：指定是否在第一次触发时触发回调函数
-            {
-                immediate : true
-            }
-        ) */
-        /* 情况三：监视reractive对象的全部属性
-                注意 ： 1 ， 此处无法正确获取oldValue
-                       2 ， 强制开启了deep（deep设置false无效）
-        */
-        /*watch (
-            person,
-            (newValue, oldValue) => {
-                console.log(`person变化了` , newValue , oldValue);
-            },
-            //第三个参数：指定是否在第一次触发时触发回调函数
-            {
-                immediate : true
-            }
-        ) */
-
-        //情况四：监视reactive对象的某个属性
-        /* watch(
-            () => person.age,
-            (newValue, oldValue) => {
-                console.log(`person.age变化了` , newValue , oldValue);
-            }
-        ) */
-
-        //情况五：监视reactive对象的某些属性
-        /* watch(
-            () => [person.age, person.name],
-            (newValue, oldValue) => {
-                console.log(`person.age或person.name变化了` , newValue , oldValue);
-            }
-        ) */
-
-        //特殊情况
-        /* watch(
-            () => person.job,
-            (newValue, oldValue) => {
-                console.log(`person.job变化了` , newValue , oldValue);
-            },
-            //第三个参数：深层监听
-            {
-                deep : true
-            }
-        ) */
 
         return {
             sum,
