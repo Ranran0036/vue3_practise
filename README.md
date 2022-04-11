@@ -149,7 +149,7 @@
   },{immediate:true,deep:true}) 
   
   //情况五：监视reactive定义的响应式数据中的某些属性
-  watch([()=>person.job,()=>person.name],(newValue,oldValue)=>{
+  watch(()=>[person.job,person.name],(newValue,oldValue)=>{
   	console.log('person的job变化了',newValue,oldValue)
   },{immediate:true,deep:true})
   
