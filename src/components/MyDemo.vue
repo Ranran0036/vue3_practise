@@ -26,7 +26,7 @@ export default {
         }) */
 
         //计算属性完整写法
-        person.fullName = computed({
+        person[fullName] = computed({
             get () {
                 return person.firstName + ' ' + person.lastName
             },
