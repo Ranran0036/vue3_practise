@@ -32,7 +32,22 @@
         console.log(person) */
 
         //实现vue3中的响应式原理
-        const p = new Proxy(person , {});
+        const p = new Proxy(person , {
+            //劫持对象的读取
+            get(target , key){
+                return Reflect.get(target , key);
+            },
+            //劫持对象的修改和添加
+            set(target , key , value){
+                Reflect.set(target , key , value);
+            },
+            //劫持对象的删除
+            deleteProperty(target , key){
+                return Reflect.deleteProperty(target , key);
+            }
+        });
+
+        console.log(Reflect);
     </script>
 </body>
 </html>
