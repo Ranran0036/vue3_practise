@@ -221,3 +221,11 @@ watchEffect(() => {
     -   `updated` =======>`onUpdated`
     -   `beforeUnmount` ==>`onBeforeUnmount`
     -   `unmounted` =====>`onUnmounted`
+
+## 7.自定义 hook 函数
+
+-   什么是 hook？—— 本质是一个函数，把 setup 函数中使用的 Composition API 进行了封装。
+
+-   类似于 vue2.x 中的 mixin。
+
+-   自定义 hook 的优势: 复用代码, 让 setup 中的逻辑更清楚易懂。
