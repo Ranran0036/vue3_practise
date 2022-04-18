@@ -1,9 +1,5 @@
 <template>
-    <h2>
-        姓名：{{ person.name }} &nbsp; 年龄：{{ person.age }} &nbsp; 薪资：{{
-            person.job.job1.salary
-        }}K
-    </h2>
+    <h2>姓名：{{ name }} &nbsp; 年龄：{{ age }} &nbsp; 薪资：{{ salary }}K</h2>
     <button @click="age++">点我增加年龄</button>
     <button @click="name += '~'">点我修改姓名</button>
     <button @click="salary++">点我增加薪资</button>
@@ -33,7 +29,6 @@ export default {
         let salary = toRef(person.job.job1, "salary");
 
         return {
-            person,
             name,
             age,
             salary,
